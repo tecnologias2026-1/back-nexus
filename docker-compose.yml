@@ -1,0 +1,14 @@
+services:
+  backend:
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    build: .
+    container_name: jovial_panini
+    ports:
+      - "10000:10000"
+    environment:
+      - PORT=10000
+    volumes:
+      - ./:/app
+    restart: unless-stopped

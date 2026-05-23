@@ -1,9 +1,9 @@
 <?php
 // Database connection
-define('DB_HOST', getenv('DB_HOST') ?: 'sql202.infinityfree.com');
-define('DB_USER', getenv('DB_USER') ?: 'if0_41710395');
-define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'bgCGG87D4RDlBz');
-define('DB_NAME', getenv('DB_NAME') ?: 'if0_41710395_mula');
+define('DB_HOST', getenv('DB_HOST') ?: 'sql211.infinityfree.com');
+define('DB_USER', getenv('DB_USER') ?: 'if0_41997596');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'LOepmhuix9A');
+define('DB_NAME', getenv('DB_NAME') ?: 'if0_41997596_nexus');
 define('DB_PORT', getenv('DB_PORT') ?: 3306);
 
 // Create connection
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 
 // Set charset
-$conn->set_charset('utf8');
+$conn->set_charset('utf8mb4');
 
 echo "Conectado a la base de datos\n";
 
