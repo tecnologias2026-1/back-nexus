@@ -1,13 +1,15 @@
 <?php
 // Database connection
-define('DB_HOST', getenv('DB_HOST') ?: 'sql211.infinityfree.com');
-define('DB_USER', getenv('DB_USER') ?: 'if0_41997596');
-define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'LOepmhuix9A');
-define('DB_NAME', getenv('DB_NAME') ?: 'if0_41997596_nexus');
-define('DB_PORT', getenv('DB_PORT') ?: 3306);
+<?php
+// En lugar de poner los datos aquí, los lees del servidor
+$host = getenv('DB_HOST') ?: 'localhost';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASS') ?: '';
+$db   = getenv('DB_NAME') ?: 'tu_base_datos';
 
-// Create connection
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT);
+$conn = new mysqli($host, $user, $pass, $db);
+
+
 
 // Check connection
 if ($conn->connect_error) {
