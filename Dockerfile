@@ -12,7 +12,7 @@ RUN apt-get update \
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "php -S 0.0.0.0:$PORT -t api api/index.php"]
+CMD ["sh", "-c", "php -S 0.0.0.0:$PORT -t ."]
 
 
 
