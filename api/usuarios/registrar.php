@@ -1,16 +1,7 @@
 <?php
-// Permitir solicitudes desde cualquier origen (CORS)
-header("Access-Control-Allow-Origin: *");
-// Permitir los métodos HTTP necesarios
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-// Permitir las cabeceras que se envían desde el cliente
-header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+// Incluir helper centralizado de CORS (DEBE ser lo primero)
+require_once __DIR__ . '/../../cors-helper.php';
 
-// Manejar la petición de preflight (OPTIONS) que hace el navegador automáticamente
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
 // Inclusión del archivo de configuración de la base de datos
 require_once __DIR__ . '/../../database/connection.php';
 
@@ -56,4 +47,5 @@ if ($conn->query($query)) {
         "error" => "Error al almacenar el registro: " . $conn->error
     ]);
 }
-?>
+
+$conn->close();

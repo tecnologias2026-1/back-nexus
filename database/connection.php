@@ -1,6 +1,5 @@
 <?php
 // Database connection
-<?php
 // En lugar de poner los datos aquí, los lees del servidor
 $host = getenv('DB_HOST') ?: 'localhost';
 $user = getenv('DB_USER') ?: 'root';
@@ -19,6 +18,4 @@ if ($conn->connect_error) {
 // Set charset
 $conn->set_charset('utf8mb4');
 
-
 /*$conn->close();*/
-?>
