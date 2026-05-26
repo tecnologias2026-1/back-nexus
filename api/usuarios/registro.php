@@ -1,17 +1,9 @@
 <?php
-// 1. Cabeceras para permitir que el frontend hable con el backend
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
+// Bootstrap: CORS, handlers de error, Content-Type JSON, preflight OPTIONS
+require_once __DIR__ . '/../../cors-helper.php';
 
-// 2. Limpiar cualquier error previo que esté ensuciando la respuesta
-if (ob_get_length()) ob_end_clean();
-
-// 3. Si es una petición de preflight de CORS, terminar aquí
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    exit;
-}
+// Conexión a la base de datos ($conn)
+require_once __DIR__ . '/../../database/connection.php';
 
 // Capturar los datos enviados en el cuerpo de la solicitud (formato JSON)
 $input = json_decode(file_get_contents("php://input"), true);
