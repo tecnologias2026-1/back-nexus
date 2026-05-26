@@ -1,3 +1,28 @@
+# ====================================
+# CORS Headers - Debe estar PRIMERO
+# ====================================
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Origin, Accept"
+    Header set Access-Control-Max-Age "3600"
+</IfModule>
+
+# ====================================
+# Handle OPTIONS preflight requests
+# ====================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/
+    
+    # Respond to OPTIONS requests immediately
+    RewriteCond %{REQUEST_METHOD} ^OPTIONS$
+    RewriteRule ^(.*)$ - [L,R=200]
+</IfModule>
+
+# ====================================
+# URL Rewriting
+# ====================================
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /api/
