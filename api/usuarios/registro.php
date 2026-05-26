@@ -1,15 +1,16 @@
 <?php
-// Incluir helper centralizado de CORS (DEBE ser lo primero)
-require_once __DIR__ . '/../../cors-helper.php';
+// 1. Cabeceras para permitir que el frontend hable con el backend
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
 
-// Inclusión del archivo de configuración de la base de datos
-require_once __DIR__ . '/../../database/connection.php';
+// 2. Limpiar cualquier error previo que esté ensuciando la respuesta
+if (ob_get_length()) ob_end_clean();
 
-// Verificar que la petición se realice mediante el método POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(["success" => false, "error" => "Método no permitido. Se requiere POST."]);
-    exit();
+// 3. Si es una petición de preflight de CORS, terminar aquí
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit;
 }
 
 // Capturar los datos enviados en el cuerpo de la solicitud (formato JSON)
@@ -78,3 +79,4 @@ if ($stmt) {
 }
 
 $conn->close();
+?>

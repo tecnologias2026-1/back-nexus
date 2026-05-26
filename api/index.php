@@ -37,9 +37,13 @@ if ($path === '') {
 if (strpos($path, '/usuarios') === 0) {
   require_once 'routes/user.routes.php';
   handleUserRoutes($method, $path);
-} elseif ($path === '/') {
-  http_response_code(200);
-  echo json_encode(['message' => 'Servidor backend activo']);
+} elseif ($path === '/' || $path === '/test-connection.php' || $path === '/test-connection') {
+  if ($path === '/test-connection.php' || $path === '/test-connection') {
+    require_once 'test-connection.php';
+  } else {
+    http_response_code(200);
+    echo json_encode(['message' => 'Servidor backend activo']);
+  }
 } else {
   http_response_code(404);
   echo json_encode(['error' => 'Ruta no encontrada']);
