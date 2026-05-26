@@ -10,7 +10,7 @@ if (ob_get_level() > 0) {
 }
 
 // Headers CORS - DEBE ser lo primero
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: https://tecnologias2026-1.github.io');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS, PATCH');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Origin, Accept');
 header('Access-Control-Max-Age: 86400');
